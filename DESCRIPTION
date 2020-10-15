@@ -1,15 +1,13 @@
-Package: yourPkg
-Title: What the Package Does (One Line, Title Case)
+Package: corona aus
+Title: An Application to Analyse Coronavirus in Australia
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Emily",
+           family = "Sheehan",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "eshe0012@student.monash.edu "
+Description: This package uses coronavirus data to generate outputs to inform users about the state of coronavirus in each state/territory. They can compare the number of new infections, deaths and recovered cases in each area. 
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
