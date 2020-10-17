@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Emily",
            family = "Sheehan",
            role = c("aut", "cre"),
-           email = "eshe0012@student.monash.edu "
+           email = "eshe0012@student.monash.edu")
 Description: This package uses coronavirus data to generate outputs to inform users about the state of coronavirus in each state/territory. They can compare the number of new infections, deaths and recovered cases in each area. 
 License: GPL-3
 Encoding: UTF-8
