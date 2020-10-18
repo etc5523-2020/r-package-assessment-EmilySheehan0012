@@ -25,25 +25,27 @@ vars <- tibble::tribble(
   "date", unique(corona_aus$date))
 
 #' @export
-select_input <- function(id, label = id,
-                         choices = choices) {
-  selectInput(inputId = id, 
-              label = paste0("Select a case ", id),
-              choices = choices)
-}
-
-#' @export
 selectize_input <- function(id, label = id,
                          choices = choices,
                          multiple = ...) {
+  multiple <- ({if (id == "cities") {
+    multiple = TRUE}
+  else {multiple = FALSE}
+    })
   selectizeInput(inputId = id, 
               label = paste0("Select a case ", id),
               choices = choices,
-              {
-                if (id == "province") {
-                  multiple = TRUE}
-                else {multiple = FALSE}
-                })
+              multiple = multiple
+                )
 }
+
+#' @export
+input_data1 <- 
+  reactive({
+    corona_aus %>%
+      dplyr::filter(province %in% selectize_input$cities,
+                    type %in% selectize_input$type,
+                    date %in% selectize_input$date)
+  })
 
 

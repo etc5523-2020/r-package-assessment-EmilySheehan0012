@@ -28,12 +28,12 @@ ui <- fluidPage(
   titlePanel(p("Coronavirus in Australia")),
   sidebarLayout(
     sidebarPanel(
-      selectizeInput(
-    inputId = "cities",
-    label = "Select a State/Territory",
-    choices = unique(corona_aus$province),
-    multiple = TRUE),
-    pmap(vars, coronaaus::select_input)),
+     # selectizeInput(
+  #  inputId = "cities",
+  #  label = "Select a State/Territory",
+  #  choices = unique(corona_aus$province),
+  #  multiple = TRUE),
+    pmap(vars, coronaaus::selectize_input)),
   #selectInput(inputId = "type",
    #           "2. Select a Case Type for the Plot and COVID-19 Comparison Table",
     #          choices = unique(corona_aus$type)),
@@ -67,17 +67,17 @@ server <- function(input, output, session) {
   pal <- colorNumeric(palette = "Spectral",
                       domain = c(min(corona_aus$cases_total):max(corona_aus$cases_total)),
                       reverse = TRUE)
-  inputdata <- reactive({
-    corona_aus %>%
-      dplyr::filter(province %in% input$cities)
-  })
+ # inputdata <- reactive({
+  #  corona_aus %>%
+   #   dplyr::filter(province %in% input$cities)
+  #})
 
-  inputdata2 <- reactive({
-    corona_aus %>%
-      dplyr::filter(province %in% input$cities,
-                    type %in% input$type,
-                    date %in% input$date)
-    })
+  #inputdata2 <- reactive({
+   # corona_aus %>%
+    #  dplyr::filter(province %in% input$cities,
+     #               type %in% input$type,
+      #              date %in% input$date)
+  #  })
 
   output$about <- renderText({
     paste0("This app has been developed by Emily Sheehan.",
@@ -122,7 +122,8 @@ server <- function(input, output, session) {
     paste0("<b>", "The Number of ", input$type," COVID-19 cases", "<b>")})
 
   output$line <- renderPlotly({
-    plot_ly(inputdata(),
+    plot_ly(coronaaus::input_data1(),
+      #inputdata(),
             x = ~date,
             y = ~cases,
             color = ~province,
@@ -189,8 +190,9 @@ server <- function(input, output, session) {
   })
   observe({
     leafletProxy(mapId = "map",
-                 data = inputdata() %>%
-                   dplyr::filter(type == "confirmed")) %>%
+                 data = coronaaus::input_data1() %>%
+                   #inputdata() %>%
+                  dplyr::filter(type == "confirmed")) %>%
       addCircleMarkers(lng = ~long,
                        lat = ~lat,
                        fillOpacity = 0.5,
@@ -205,7 +207,8 @@ server <- function(input, output, session) {
     paste0("<b>", "COVID-19 in Australia", "<b>", "<p>",
            "A Comparison of COVID-19 Cases in Australia according to Date")})
   output$table <- renderTable(
-    {data <- inputdata2() %>%
+    {data <- coronaaus::input_data1() %>%
+      #inputdata2() %>%
       mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
       mutate(cases_total = as.integer(cases_total)) %>%
       select(date,
