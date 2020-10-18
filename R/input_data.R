@@ -18,7 +18,7 @@ corona_aus <- coronavirus %>%
                   type) %>%
   mutate(cases_total =lag(cumsum(cases),k=1, default=0))
 
-#' @export
+
 input_data <- #function(input, output, session) {
 #  cities_data <- 
     reactive({

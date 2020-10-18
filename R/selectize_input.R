@@ -28,24 +28,47 @@ vars <- tibble::tribble(
 selectize_input <- function(id, label = id,
                          choices = choices,
                          multiple = ...) {
-  multiple <- ({if (id == "cities") {
-    multiple = TRUE}
-  else {multiple = FALSE}
+  multiple <- ({if (id == "type") {
+    multiple = FALSE}
+  else {multiple = TRUE}
     })
+  if (id == "date") {
+    sliderInput(inputId = id, 
+                label = paste0("Select a case ", id),
+                value = corona_aus$date,
+                min = min(corona_aus$date),
+                max = max(corona_aus$date))
+  }
+  else {
   selectizeInput(inputId = id, 
               label = paste0("Select a case ", id),
               choices = choices,
               multiple = multiple
-                )
+                )}
 }
 
+
+
+
 #' @export
-input_data1 <- 
-  reactive({
-    corona_aus %>%
-      dplyr::filter(province %in% selectize_input$cities,
-                    type %in% selectize_input$type,
-                    date %in% selectize_input$date)
+input_data <- function(input, output, session){
+  selected <- reactive({
+    each_var <- pmap(names(vars), ~filter_var(vars[[.x]], input[[.x]]))
+    reduce(each_var, ~ .x & .y)
   })
+  head(selected)
+}
+
+ 
+#input_data1 <- 
+ # reactive({
+  #  corona_aus %>%
+   #   dplyr::filter(province %in% one,
+    #                type %in% two,
+     #               date %in% three)
+      #purrr::keep(input$cities %in% .x,
+       #           input$type %in% .x,
+        #          input$date %>% .x)
+ # })
 
 
