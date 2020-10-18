@@ -6,6 +6,7 @@ library(coronavirus)
 library(broom)
 library(lubridate)
 library(leaflet)
+library(purrr)
 
 update_dataset()
 data("coronavirus")
@@ -29,17 +30,16 @@ ui <- fluidPage(
     sidebarPanel(
       selectizeInput(
     inputId = "cities",
-    label = "1. Select a State/Territory for all Outputs",
+    label = "Select a State/Territory",
     choices = unique(corona_aus$province),
     multiple = TRUE),
-  selectInput(inputId = "type",
-              "2. Select a Case Type for the Plot and COVID-19 Comparison Table",
-              choices = unique(corona_aus$type)),
-  sliderInput("date",
-              "3. Select a Date for the COVID-19 Comparison Table",
-              value = corona_aus$date,
-              min = min(corona_aus$date),
-              max = max(corona_aus$date))),
+    pmap(vars, coronaaus::select_input)),
+  #selectInput(inputId = "type",
+   #           "2. Select a Case Type for the Plot and COVID-19 Comparison Table",
+    #          choices = unique(corona_aus$type)),
+  #selectInput("date",
+   #           "3. Select a Date for the COVID-19 Comparison Table",
+    #          choices = unique(corona_aus$date))),
   mainPanel(
     #https://shiny.rstudio.com/articles/layout-guide.html
     tabsetPanel(

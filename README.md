@@ -22,24 +22,10 @@ devtools::install_github("etc5523-2020/r-package-assessment-EmilySheehan0012")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to launch the coronavirus in
+Australia app using the package:
 
 ``` r
 #library(coronaaus)
-## basic example code
+#coronaaus::launch_app()
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-#summary(cars)
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
