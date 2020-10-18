@@ -48,27 +48,29 @@ selectize_input <- function(id, label = id,
 }
 
 
-
-
 #' @export
-input_data <- function(input, output, session){
-  selected <- reactive({
-    each_var <- pmap(names(vars), ~filter_var(vars[[.x]], input[[.x]]))
-    reduce(each_var, ~ .x & .y)
+input_data <- function(){
+  data <- reactive({
+    corona_aus
   })
-  head(selected)
+  
+  output$filter <- renderUI(
+    pmap(vars, ~ make_ui(data()[[.x]], .x))
+  )
+  
+  selected <- reactive({
+    each_var <- pmap(vars(), ~ filter_var(data()[[.x]], input[[.x]]))
+    reduce(each_var, `&`)
+  })
 }
+  #function(input, output, session){
+#  selected <- reactive({
+ #   each_var <- pmap(names(vars), ~filter_var(vars[[.x]], input[[.x]]))
+  #  reduce(each_var, ~ .x & .y)
+  #})
+  #head(selected)
+#}
 
  
-#input_data1 <- 
- # reactive({
-  #  corona_aus %>%
-   #   dplyr::filter(province %in% one,
-    #                type %in% two,
-     #               date %in% three)
-      #purrr::keep(input$cities %in% .x,
-       #           input$type %in% .x,
-        #          input$date %>% .x)
- # })
 
 

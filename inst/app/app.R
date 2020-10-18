@@ -75,12 +75,13 @@ server <- function(input, output, session) {
       dplyr::filter(province %in% input$cities)
   })
   
-  inputdata2 <- reactive({
-    corona_aus %>%
-      dplyr::filter(province %in% input$cities,
-                    type %in% input$type,
-                   date %in% input$date)
-  })
+  input_data2 <- coronaaus::input_data()
+#  inputdata2 <- reactive({
+ #   corona_aus %>%
+  #    dplyr::filter(province %in% input$cities,
+   #                 type %in% input$type,
+    #               date %in% input$date)
+  #})
   
   output$about <- renderText({
     paste0("This app has been developed by Emily Sheehan.",
@@ -125,7 +126,8 @@ server <- function(input, output, session) {
     paste0("<b>", "The Number of ", input$type," COVID-19 cases", "<b>")})
   
   output$line <- renderPlotly({
-    plot_ly(inputdata(),
+    plot_ly(
+      inputdata2(),
             x = ~date,
             y = ~cases,
             color = ~province,
