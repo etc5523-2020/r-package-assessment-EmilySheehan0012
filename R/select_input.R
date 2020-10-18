@@ -20,6 +20,7 @@ corona_aus <- coronavirus %>%
 
 vars <- tibble::tribble(
   ~ id,   ~ choices,
+  "cities", unique(corona_aus$province),
   "type",  unique(corona_aus$type),
   "date", unique(corona_aus$date))
 
@@ -30,4 +31,19 @@ select_input <- function(id, label = id,
               label = paste0("Select a case ", id),
               choices = choices)
 }
+
+#' @export
+selectize_input <- function(id, label = id,
+                         choices = choices,
+                         multiple = ...) {
+  selectizeInput(inputId = id, 
+              label = paste0("Select a case ", id),
+              choices = choices,
+              {
+                if (id == "province") {
+                  multiple = TRUE}
+                else {multiple = FALSE}
+                })
+}
+
 
