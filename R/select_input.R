@@ -26,7 +26,7 @@ vars <- tibble::tribble(
 #' @export
 select_input <- function(id, label = id,
                          choices = choices) {
-  selectInput(id, 
+  selectInput(inputId = id, 
               label = paste0("Select a case ", id),
               choices = choices)
 }
