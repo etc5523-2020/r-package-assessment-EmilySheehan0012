@@ -1,11 +1,17 @@
-library(shiny)
-library(tidyverse)
-library(dplyr)
-
+#' Simplifying the UI of the Application
+#' 
+#' This function simplifies the user interface of the app. It automatically generates a selectize input or a slider input
+#' for the variables stored as `vars` (depending on the type of variable). For example, for `date` the input generated is a slider,
+#' whereas for `type` the variable generated is a select input. 
+#'
+#' @examples 
+#' library(coronaaus)
+#' pmap(vars, coronaaus::selectize_input())
+#'
 #' @export
 selectize_input <- function(id, label = id,
                          choices = choices,
-                         multiple = ...) {
+                         multiple = multiple) {
   
   multiple <- ({if (id == "type") {
     multiple = FALSE}
@@ -25,7 +31,6 @@ selectize_input <- function(id, label = id,
               multiple = multiple
                 )}
 }
-
 
 
  
