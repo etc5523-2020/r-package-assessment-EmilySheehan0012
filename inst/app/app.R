@@ -28,8 +28,8 @@ ui <- fluidPage(
   titlePanel(p("Coronavirus in Australia")),
   sidebarLayout(
     sidebarPanel(
-      pmap(vars, coronaaus::selectize_input,
-           ~ make_ui(vars[[.x]], .x))),
+      pmap(vars, coronaaus::selectize_input)),
+      
       #selectizeInput(
        # inputId = "cities",
       #  label = "1. Select a State/Territory for all Outputs",
@@ -75,13 +75,13 @@ server <- function(input, output, session) {
       dplyr::filter(province %in% input$cities)
   })
   
-  input_data2 <- coronaaus::input_data()
-#  inputdata2 <- reactive({
- #   corona_aus %>%
-  #    dplyr::filter(province %in% input$cities,
-   #                 type %in% input$type,
-    #               date %in% input$date)
-  #})
+  #input_data2 <- coronaaus::input_data()
+  inputdata2 <- reactive({
+    corona_aus %>%
+      dplyr::filter(province %in% input$cities,
+                    type %in% input$type,
+                   date %in% input$date)
+  })
   
   output$about <- renderText({
     paste0("This app has been developed by Emily Sheehan.",
@@ -127,7 +127,7 @@ server <- function(input, output, session) {
   
   output$line <- renderPlotly({
     plot_ly(
-      inputdata2(),
+      inputdata(),
             x = ~date,
             y = ~cases,
             color = ~province,

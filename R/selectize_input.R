@@ -48,7 +48,7 @@ selectize_input <- function(id, label = id,
 }
 
 
-#' @export
+######
 input_data <- function(){
   data <- reactive({
     corona_aus
