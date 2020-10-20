@@ -22,5 +22,4 @@
 #'@examples
 #'library(coronaaus)
 #'corona_aus
-#'
 "corona_aus"

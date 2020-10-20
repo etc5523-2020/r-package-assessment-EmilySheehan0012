@@ -33,3 +33,27 @@ input_data <- #function(input, output, session) {
                     date %in% input$date)
   })
   #}
+
+######
+input_data <- function(){
+  data <- reactive({
+    corona_aus
+  })
+  
+  output$filter <- renderUI(
+    pmap(vars, ~ make_ui(data()[[.x]], .x))
+  )
+  
+  selected <- reactive({
+    each_var <- pmap(vars(), ~ filter_var(data()[[.x]], input[[.x]]))
+    reduce(each_var, `&`)
+  })
+}
+#function(input, output, session){
+#  selected <- reactive({
+#   each_var <- pmap(names(vars), ~filter_var(vars[[.x]], input[[.x]]))
+#  reduce(each_var, ~ .x & .y)
+#})
+#head(selected)
+#}
+

@@ -34,6 +34,5 @@ Cases_total: \tab The total number of cases.\cr
 \examples{
 library(coronaaus)
 corona_aus
-
 }
 \keyword{datasets}

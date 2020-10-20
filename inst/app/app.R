@@ -24,6 +24,12 @@ library(purrr)
    #               type) %>%
   #mutate(cases_total =lag(cumsum(cases),k=1, default=0))
 
+vars <- tibble::tribble(
+  ~ id,   ~ choices,
+  "cities", unique(corona_aus$province),
+  "type",  unique(corona_aus$type),
+  "date", unique(corona_aus$date))
+
 ui <- fluidPage(
   titlePanel(p("Coronavirus in Australia")),
   sidebarLayout(
@@ -213,8 +219,8 @@ server <- function(input, output, session) {
   output$table <- renderTable(
     {data <- 
       inputdata2() %>%
-    #  mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
-     # mutate(cases_total = as.integer(cases_total)) %>%
+      mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
+      mutate(cases_total = as.integer(cases_total)) %>%
       select(date,
              type,
              province,
