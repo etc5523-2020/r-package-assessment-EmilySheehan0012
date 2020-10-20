@@ -6,18 +6,21 @@
 #' 6,220+ rows, which is updated on a continual basis. 
 #'
 #' The data is disaggregated using 7 keys:
-#' \tabular{11}{
-#' Date: \tab The date the case numbers are recorded on.
-#' Type: \tab The type of coronavirus case i.e. death, recovered or confirmed.
-#' Province: \tab The state or territory the case is from.
-#' Lat: \tab The latitude of the state/territory that has the case.
-#' Long: \tab The longitude of the state/territory that has the case.
-#' Cases: \tab The number of cases.
-#' Cases_total: \tab The total number of cases.
+#' \tabular{ll}{
+#' Date: \tab The date the case numbers are recorded on.\cr
+#' Type: \tab The type of coronavirus case i.e. death, recovered or confirmed.\cr
+#' Province: \tab The state or territory the case is from.\cr
+#' Lat: \tab The latitude of the state/territory that has the case.\cr
+#' Long: \tab The longitude of the state/territory that has the case.\cr
+#' Cases: \tab The number of cases.\cr
+#' Cases_total: \tab The total number of cases.\cr
 #' }
 #'
 #'@source
+#' Coronavirus
 #' 
-#'
+#'@examples
+#'library(coronaaus)
+#'corona_aus
 #'
 "corona_aus"

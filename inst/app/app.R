@@ -8,21 +8,21 @@ library(lubridate)
 library(leaflet)
 library(purrr)
 
-update_dataset()
-data("coronavirus")
+#update_dataset()
+#data("coronavirus")
 
-corona_aus <- coronavirus %>%
-  dplyr::filter(country == "Australia") %>%
-  dplyr::group_by(date,
-                  type,
-                  province,
-                  lat,
-                  long) %>%
-  summarise(cases = sum(cases)) %>%
-  dplyr::filter(cases >= 0) %>%
-  dplyr::group_by(province,
-                  type) %>%
-  mutate(cases_total =lag(cumsum(cases),k=1, default=0))
+#corona_aus <- coronavirus %>%
+ # dplyr::filter(country == "Australia") %>%
+  #dplyr::group_by(date,
+   #               type,
+    #              province,
+     #             lat,
+      #            long) %>%
+#  summarise(cases = sum(cases)) %>%
+ # dplyr::filter(cases >= 0) %>%
+  #dplyr::group_by(province,
+   #               type) %>%
+  #mutate(cases_total =lag(cumsum(cases),k=1, default=0))
 
 ui <- fluidPage(
   titlePanel(p("Coronavirus in Australia")),
@@ -71,13 +71,13 @@ server <- function(input, output, session) {
                       domain = c(min(corona_aus$cases_total):max(corona_aus$cases_total)),
                       reverse = TRUE)
   inputdata <- reactive({
-    corona_aus %>%
+    coronaaus::corona_aus %>%
       dplyr::filter(province %in% input$cities)
   })
   
   #input_data2 <- coronaaus::input_data()
   inputdata2 <- reactive({
-    corona_aus %>%
+    coronaaus::corona_aus %>%
       dplyr::filter(province %in% input$cities,
                     type %in% input$type,
                    date %in% input$date)
@@ -182,7 +182,7 @@ server <- function(input, output, session) {
     paste0(" ", "<p>", "<b>", "Map of Confirmed COVID-19 Cases in Australia", "<b>", "<p>")})
   
   output$map <- renderLeaflet({
-    leaflet(corona_aus) %>%
+    leaflet(coronaaus::corona_aus) %>%
       addTiles() %>%
       fitBounds(lng1 = min(corona_aus$long),
                 lng2 = max(corona_aus$long),
@@ -213,8 +213,8 @@ server <- function(input, output, session) {
   output$table <- renderTable(
     {data <- 
       inputdata2() %>%
-      mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
-      mutate(cases_total = as.integer(cases_total)) %>%
+    #  mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
+     # mutate(cases_total = as.integer(cases_total)) %>%
       select(date,
              type,
              province,
