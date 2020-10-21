@@ -1,12 +1,12 @@
 Package: coronaaus
-Title: An Application to Analyse Coronavirus in Australia
+Title: A Tool to Analyse Coronavirus in Australia
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Emily",
            family = "Sheehan",
            role = c("aut", "cre"),
            email = "eshe0012@student.monash.edu")
-Description: This package uses coronavirus data to generate outputs to inform users about the state of coronavirus in each state/territory. They can compare the number of new infections, deaths and recovered cases in each area. 
+Description: This package has a variety of functions that enable users to explore coronavirus data in Australia via the application. Most of the functions are designed to streamline the application, which can be launched via the `launch_app` function.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

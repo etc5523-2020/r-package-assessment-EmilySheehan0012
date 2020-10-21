@@ -17,6 +17,7 @@ corona_aus <- coronavirus %>%
   dplyr::filter(cases >= 0) %>%
   dplyr::group_by(province,
                   type) %>%
+  mutate(date = as.Date(date)) %>%
   mutate(cases_total =lag(cumsum(cases),k=1, default=0)) 
 
 usethis::use_data(corona_aus, overwrite = TRUE)

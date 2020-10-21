@@ -76,18 +76,20 @@ server <- function(input, output, session) {
   pal <- colorNumeric(palette = "Spectral",
                       domain = c(min(corona_aus$cases_total):max(corona_aus$cases_total)),
                       reverse = TRUE)
+  
   inputdata <- reactive({
-    coronaaus::corona_aus %>%
+    corona_aus %>%
       dplyr::filter(province %in% input$cities)
   })
   
-  #input_data2 <- coronaaus::input_data()
+
   inputdata2 <- reactive({
-    coronaaus::corona_aus %>%
+    corona_aus %>%
       dplyr::filter(province %in% input$cities,
                     type %in% input$type,
                    date %in% input$date)
   })
+
   
   output$about <- renderText({
     paste0("This app has been developed by Emily Sheehan.",
@@ -200,9 +202,8 @@ server <- function(input, output, session) {
   })
   observe({
     leafletProxy(mapId = "map",
-                 data = 
-                   inputdata() %>%
-                   dplyr::filter(type == "confirmed")) %>%
+                 data = inputdata() %>%
+                dplyr::filter(type == "confirmed")) %>%
       addCircleMarkers(lng = ~long,
                        lat = ~lat,
                        fillOpacity = 0.5,
@@ -217,8 +218,7 @@ server <- function(input, output, session) {
     paste0("<b>", "COVID-19 in Australia", "<b>", "<p>",
            "A Comparison of COVID-19 Cases in Australia according to Date")})
   output$table <- renderTable(
-    {data <- 
-      inputdata2() %>%
+    {data <- inputdata2() %>%
       mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
       mutate(cases_total = as.integer(cases_total)) %>%
       select(date,

@@ -7,12 +7,21 @@
 selectize_input(id, label = id, choices = choices, multiple = multiple)
 }
 \description{
-This function simplifies the user interface of the app. It automatically generates a selectize input or a slider input
-for the variables stored as \code{vars} (depending on the type of variable). For example, for \code{date} the input generated is a slider,
+This function simplifies the user interface of the app. It must be used inside a \code{pmap} function and be used with a corresponding \code{vars} variable
+built with \code{tribble}. The \code{vars} variable must have a column for \code{id} and \code{choices}, where \code{id} is the variable identifying the input and \code{choices} is
+the variable identifying the choices for the slider or selectize input. When used inside the \code{pmap} function, it automatically generates
+a selectize input or slider input depending on the variable type. For example, for \code{date} the input generated is a slider,
 whereas for \code{type} the variable generated is a select input.
+
+There are no inputs required as shown in the example below, and the output returned is shown in the application.
 }
 \examples{
 library(coronaaus)
-pmap(vars, coronaaus::selectize_input())
+vars <- tibble::tribble(
+~ id,   ~ choices,
+"cities", unique(corona_aus$province),
+"type",  unique(corona_aus$type),
+"date", unique(corona_aus$date))
+pmap(vars, coronaaus::selectize_input)
 
 }
