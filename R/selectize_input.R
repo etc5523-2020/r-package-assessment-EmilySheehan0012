@@ -9,12 +9,15 @@
 #' 
 #' There are no inputs required as shown in the example below, and the output returned is shown in the application.
 #'
+#'@param id This is the variable to identify the slider or selectize input, which should be stored in `vars`. 
+#'@param label This variable is the label given to the slider or selectize input, the function will automatically generate the label from the specified id.
+#'@param choices This variable is the choices given to the slider or selectize input, which should be stored in `vars`.
+#'@param multiple This variable is about whether the input should have the option to select multiple variables, the function will automatically generate the response depending on the id. 
+#'
 #' @examples 
-#' library(coronaaus)
-#' vars <- tibble::tribble(
-#' ~ id,   ~ choices,
-#' "cities", unique(corona_aus$province),
-#' "type",  unique(corona_aus$type),
+#' vars <- tibble::tribble(~ id, ~ choices, 
+#' "cities", unique(corona_aus$province), 
+#' "type",  unique(corona_aus$type), 
 #' "date", unique(corona_aus$date))
 #' pmap(vars, coronaaus::selectize_input)
 #'
@@ -28,14 +31,14 @@ selectize_input <- function(id, label = id,
   else {multiple = TRUE}
     })
   if (id == "date") {
-    sliderInput(inputId = id, 
+    shiny::sliderInput(inputId = id, 
                 label = paste0("Select a case ", id),
                 value = corona_aus$date,
                 min = min((corona_aus$date)),
                 max = max((corona_aus$date)))
   }
   else {
-  selectizeInput(inputId = id, 
+  shiny::selectizeInput(inputId = id, 
               label = paste0("Select a case ", id),
               choices = choices,
               multiple = multiple

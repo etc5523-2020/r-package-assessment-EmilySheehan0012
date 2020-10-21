@@ -8,7 +8,6 @@
 #' There are no inputs required as shown in the example below, and the output returned is the launch of the application.
 #' 
 #' @examples 
-#' library(coronaaus)
 #' coronaaus::launch_app()
 #'
 #' @export

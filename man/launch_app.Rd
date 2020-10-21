@@ -14,7 +14,6 @@ a how tab, an example tab, a map of confirmed cases, a plot of confirmed cases, 
 There are no inputs required as shown in the example below, and the output returned is the launch of the application.
 }
 \examples{
-library(coronaaus)
 coronaaus::launch_app()
 
 }
