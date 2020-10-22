@@ -7,9 +7,8 @@
 
 <!-- badges: end -->
 
-This package uses coronavirus data to generate outputs to inform users
-about the state of coronavirus in each state/territory. They can compare
-the number of new infections, deaths and recovered cases in each area.
+The purpose of this package is to launch and simplify an app, which aids
+users to compare coronavirus in chosen states/territories in Australia.
 
 ## Installation
 

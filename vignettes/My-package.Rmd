@@ -1,8 +1,8 @@
 ---
-title: "My Package"
+title: "coronaaus Package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{My-package}
+  %\VignetteIndexEntry{coronaaus Package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,3 +17,30 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(coronaaus)
 ```
+
+## How to launch the app
+
+To launch the app, the user should use `coronaaus::launch_app`. This code is written below.
+
+```{r launch-app, eval=FALSE}
+coronaaus::launch_app()
+```
+
+## What does the app do?
+
+The app allows users to explore COVID-19 in Australia and compare the number of cases in each State/Territory by generating a number of different outputs. 
+
+The tabs within the are as follows; "about", "how", "which state or territory has suffered the most?", "map of confirmed COVID-19 cases", "plot of COVID-19 cases", "comparison table" and "sources". Hence, the outputs are a map of confirmed coronavirus cases, a plot of coronavirus cases which changes according to case type and a comparison table. 
+
+The map allows users to compare the total number of confirmed cases of COVID-19 in the selected areas to date, while the line plot means users can compare the case type (confirmed, recovered, death) for selected areas overtime. 
+
+Finally, users can use the comparison table to compare daily and total case numbers for two specified dates, provided they have selected the states/territories and case type. 
+
+## How do you use the app? 
+
+To generate the map of confirmed coronavirus cases, the user must select the states or territories that they would like to compare. They can click on the bubbles to reveal the total number of cases in that area to date. 
+
+Then, the user can select a case type (i.e. confirmed, death, recovered). This will generate a line graph of COVID-19 cases for their chosen case type. They can click on the line to reveal a timeline for COVID-19 in Australia. 
+
+Finally, the user can select a date or any two dates (provided they have already selected states/territories and a case type) and compare the case numbers and total case numbers for those dates. 
+
