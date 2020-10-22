@@ -25,10 +25,14 @@ whereas for \code{type} the variable generated is a select input.
 There are no inputs required as shown in the example below, and the output returned is shown in the application.
 }
 \examples{
+library(purrr)
+library(tibble)
+library(coronaaus)
+coronaaus::corona_aus
 vars <- tibble::tribble(~ id, ~ choices, 
 "cities", unique(corona_aus$province), 
 "type",  unique(corona_aus$type), 
 "date", unique(corona_aus$date))
-pmap(vars, coronaaus::selectize_input)
+purrr::pmap(vars, coronaaus::selectize_input)
 
 }

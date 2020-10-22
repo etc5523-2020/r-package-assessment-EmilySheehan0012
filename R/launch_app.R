@@ -7,8 +7,7 @@
 #' 
 #' There are no inputs required as shown in the example below, and the output returned is the launch of the application.
 #' 
-#' @examples 
-#' coronaaus::launch_app()
+#'
 #'
 #' @export
 launch_app <- function() {

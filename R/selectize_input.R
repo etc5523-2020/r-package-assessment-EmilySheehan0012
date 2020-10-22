@@ -15,11 +15,15 @@
 #'@param multiple This variable is about whether the input should have the option to select multiple variables, the function will automatically generate the response depending on the id. 
 #'
 #' @examples 
+#' library(purrr)
+#' library(tibble)
+#' library(coronaaus)
+#' coronaaus::corona_aus
 #' vars <- tibble::tribble(~ id, ~ choices, 
 #' "cities", unique(corona_aus$province), 
 #' "type",  unique(corona_aus$type), 
 #' "date", unique(corona_aus$date))
-#' pmap(vars, coronaaus::selectize_input)
+#' purrr::pmap(vars, coronaaus::selectize_input)
 #'
 #' @export
 selectize_input <- function(id, label = id,

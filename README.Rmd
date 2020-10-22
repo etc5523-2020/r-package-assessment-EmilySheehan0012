@@ -22,7 +22,7 @@ The purpose of this package is to launch and simplify an app, which aids users t
 
 ## Installation
 
-The development version from [GitHub](https://github.com/) with:
+The development version can be installed from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -30,11 +30,19 @@ devtools::install_github("etc5523-2020/r-package-assessment-EmilySheehan0012")
 ```
 ## Example
 
-This is a basic example which shows you how to launch the coronavirus in Australia app using the package:
+This example shows you how to launch the 'Coronavirus in Australia' app using the package:
 
-```{r example}
-#library(coronaaus)
-#coronaaus::launch_app()
+```{r example-launch, eval = FALSE}
+library(coronaaus)
+coronaaus::launch_app()
 ```
+
+This example shows you how to use the coronavirus data within the package:
+
+```{r example-data}
+coronaaus::corona_aus
+```
+
+
 
 
