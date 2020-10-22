@@ -1,5 +1,5 @@
 Package: coronaaus
-Title: A Tool to Analyse Coronavirus in Australia
+Title: A Tool to Assist with the Analysis of Coronavirus in Australia
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Emily",

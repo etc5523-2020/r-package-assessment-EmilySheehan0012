@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # coronaaus
 
 <!-- badges: start -->
+[![R build status](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/actions)
 <!-- badges: end -->
 
 The purpose of this package is to launch and simplify an app, which aids users to compare coronavirus in chosen states/territories in Australia. 
@@ -40,7 +41,7 @@ coronaaus::launch_app()
 This example shows you how to use the coronavirus data within the package:
 
 ```{r example-data}
-coronaaus::corona_aus
+head(coronaaus::corona_aus, 10)
 ```
 
 

@@ -131,7 +131,7 @@ server <- function(input, output, session) {
   })
   
   output$titleplot <- renderText({
-    paste0("<b>", "The Number of ", input$type," COVID-19 cases", "<b>")})
+   paste0("<b>", "The Number of ", input$type," COVID-19 cases", "<b>")})
   
   output$line <- renderPlotly({
     plot_ly(
@@ -187,7 +187,10 @@ server <- function(input, output, session) {
   })
   
   output$titlemap <- renderText({
-    paste0(" ", "<p>", "<b>", "Map of Confirmed COVID-19 Cases in Australia", "<b>", "<p>")})
+    coronaaus::covid_title("map")
+    
+  #  paste0(" ", "<p>", "<b>", "Map of Confirmed COVID-19 Cases in Australia", "<b>", "<p>")
+    })
   
   output$map <- renderLeaflet({
     leaflet(coronaaus::corona_aus) %>%
@@ -214,9 +217,10 @@ server <- function(input, output, session) {
                        popup = ~paste0(province, ",  ", cases_total, " cases"))
   })
   
-  output$titletable <- renderText({
-    paste0("<b>", "COVID-19 in Australia", "<b>", "<p>",
-           "A Comparison of COVID-19 Cases in Australia according to Date")})
+  output$titletable <- renderText({coronaaus::covid_title("table")
+   # paste0("<b>", "COVID-19 in Australia", "<b>", "<p>",
+    #       "A Comparison of COVID-19 Cases in Australia according to Date")
+    })
   output$table <- renderTable(
     {data <- inputdata2() %>%
       mutate(date = format(as.Date(date), "%Y-%m-%d")) %>%
