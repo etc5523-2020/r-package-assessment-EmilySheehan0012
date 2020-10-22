@@ -20,3 +20,8 @@ Imports:
     tidyverse,
     shiny,
     tibble
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
