@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# coronaaus
+
+<!-- badges: start -->
+[![R build status](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/actions)
+<!-- badges: end -->
+
+The purpose of this package is to launch and simplify an app. The app is a tool which hopes to assist with the comparison and analysis of coronavirus in chosen states/territories in Australia. 
+
+## Installation
+
+The development version can be installed from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("etc5523-2020/r-package-assessment-EmilySheehan0012")
+```
+## Example
+
+This example shows you how to launch the 'Coronavirus in Australia' app using the package:
+
+```{r example-launch, eval = FALSE}
+library(coronaaus)
+coronaaus::launch_app()
+```
+
+This example shows you how to use the coronavirus data within the package:
+
+```{r example-data}
+head(coronaaus::corona_aus, 10)
+```
+
+
+
+
