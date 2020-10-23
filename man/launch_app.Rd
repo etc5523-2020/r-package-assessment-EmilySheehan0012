@@ -2,9 +2,12 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{An Application for Coronavirus in Australia}
+\title{Launch the Application for Coronavirus in Australia}
 \usage{
 launch_app()
+}
+\value{
+The launch of the application
 }
 \description{
 This function launches an application which was made to allow users to easily explore the

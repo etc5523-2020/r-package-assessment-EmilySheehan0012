@@ -3,7 +3,7 @@
 #' @description 
 #' This function automatically generates a title for the specified output and displays it in the app. 
 #' 
-#' @param type The type of output. 
+#' @param type The type of output as a character vector (must be a map or table). 
 #' 
 #' @return The title of the output
 #' 

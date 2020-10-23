@@ -9,8 +9,9 @@
 status](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-EmilySheehan0012/actions)
 <!-- badges: end -->
 
-The purpose of this package is to launch and simplify an app, which aids
-users to compare coronavirus in chosen states/territories in Australia.
+The purpose of this package is to launch and simplify an app. The app is
+a tool which hopes to assist with the comparison and analysis of
+coronavirus in chosen states/territories in Australia.
 
 ## Installation
 

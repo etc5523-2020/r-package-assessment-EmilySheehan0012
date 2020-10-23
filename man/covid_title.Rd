@@ -7,7 +7,7 @@
 covid_title(type)
 }
 \arguments{
-\item{type}{The type of output.}
+\item{type}{The type of output as a character vector (must be a map or table).}
 }
 \value{
 The title of the output

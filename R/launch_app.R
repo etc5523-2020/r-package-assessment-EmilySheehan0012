@@ -1,4 +1,4 @@
-#' An Application for Coronavirus in Australia
+#' Launch the Application for Coronavirus in Australia
 #' 
 #' @description 
 #' This function launches an application which was made to allow users to easily explore the 
@@ -7,7 +7,7 @@
 #' 
 #' There are no inputs required as shown in the example below, and the output returned is the launch of the application.
 #' 
-#'
+#' @return The launch of the application
 #'
 #' @export
 launch_app <- function() {

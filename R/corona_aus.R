@@ -17,9 +17,9 @@
 #' }
 #'
 #'@source
-#' Coronavirus
+#' Coronavirus Package
 #' 
 #'@examples
 #'library(coronaaus)
-#'corona_aus
+#'head(corona_aus, 10)
 "corona_aus"

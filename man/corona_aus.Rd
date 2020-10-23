@@ -8,7 +8,7 @@
 An object of class \code{grouped_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 6230 rows and 7 columns.
 }
 \source{
-Coronavirus
+Coronavirus Package
 }
 \usage{
 corona_aus
@@ -33,6 +33,6 @@ Cases_total: \tab The total number of cases.\cr
 }
 \examples{
 library(coronaaus)
-corona_aus
+head(corona_aus, 10)
 }
 \keyword{datasets}
